@@ -55,10 +55,16 @@ const RegisterScreen = () => {
     }
   };
 
-  const postDetails = async (photo) => {
+  const postDetails = (photo) => {
     if (!photo) {
       return setPicMessage("Please Select an Image");
     }
+    // if (
+    //   photo ===
+    //   "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+    // ) {
+    //   return setPicMessage("Please Select an Image");
+    // }
 
     setPicMessage(null);
     if (photo.type === "image/jpeg" || photo.type === "image/png") {
@@ -71,19 +77,17 @@ const RegisterScreen = () => {
       data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
       data.append("folder", "gistnotes");
 
-      const response = fetch(
+      fetch(
         `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
         {
-          method: "POST",
+          method: "post",
           body: data,
         }
-      );
-
-      response
+      )
         .then((res) => res.json())
-        .then((response) => {
-          console.log(response.url.toString());
-          setPic(response?.url?.toString());
+        .then((data) => {
+          console.log(data);
+          setPic(data.url.toString());
         })
         .catch((err) => {
           console.log(err);
@@ -146,7 +150,6 @@ const RegisterScreen = () => {
             <Form.Label>Profile Picture</Form.Label>
             <Form.Control
               onChange={(e) => postDetails(e.target.files[0])}
-              id="custom-file"
               type="file"
               label="Upload Profile Picture"
             />

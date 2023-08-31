@@ -19,7 +19,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
-            <Form inline>
+            <Form>
               <FormControl
                 type="text"
                 placeholder="Search"
@@ -29,9 +29,7 @@ const Header = () => {
           </Nav>
 
           <Nav>
-            <Nav.Link href="/mynotes">
-              <Link to="/mynotes">My Notes</Link>
-            </Nav.Link>
+            <Nav.Link href="/mynotes">My Notes</Nav.Link>
             <NavDropdown title="Krushna Kulkarni" id="basic-nav-dropdown">
               <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
 
