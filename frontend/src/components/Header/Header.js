@@ -7,10 +7,20 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../slices/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userAuth = useSelector((state) => state?.userAuth);
+  const { userInfo } = userAuth;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     <Navbar bg="primary" expand="lg" variant="dark">
@@ -36,12 +46,7 @@ const Header = () => {
               <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
 
               <NavDropdown.Divider />
-              <NavDropdown.Item
-                onClick={() => {
-                  localStorage.removeItem("userInfo");
-                  navigate("/");
-                }}
-              >
+              <NavDropdown.Item onClick={() => logoutHandler()}>
                 Logout
               </NavDropdown.Item>
             </NavDropdown>

@@ -1,44 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import "./LoginScreen.css";
-import axios from "axios";
 import Loading from "./../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../slices/userSlice";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  const userAuth = useSelector((state) => state?.userAuth);
+  const { loading, error, userInfo } = userAuth;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/mynotes");
+    }
+  }, [navigate, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    try {
-      const config = {
-        headers: {
-          "content-type": "application/json",
-        },
-      };
-
-      setLoading(true);
-
-      const { data } = await axios.post(
-        "/api/users/login",
-        {
-          email,
-          password,
-        },
-        config
-      );
-      setLoading(false);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-    } catch (error) {
-      setLoading(false);
-      setError(error.response.data.message);
-    }
+    dispatch(login(email, password));
   };
 
   return (
@@ -47,7 +34,7 @@ const LoginScreen = () => {
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
         <Form onSubmit={submitHandler}>
-          <Form.Group controlID="formBasicEmail">
+          <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
