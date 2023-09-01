@@ -3,7 +3,10 @@ import { Alert } from "react-bootstrap";
 
 const ErrorMessage = ({ variant = "info", children }) => {
   return (
-    <Alert variant={variant} style={{ fontsize: 20 }}>
+    <Alert
+      variant={variant}
+      style={{ fontsize: 20, marginTop: 5, marginBottom: 5 }}
+    >
       <strong>{children}</strong>
     </Alert>
   );

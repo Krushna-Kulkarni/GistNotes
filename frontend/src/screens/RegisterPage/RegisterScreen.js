@@ -59,12 +59,6 @@ const RegisterScreen = () => {
     if (!photo) {
       return setPicMessage("Please Select an Image");
     }
-    // if (
-    //   photo ===
-    //   "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-    // ) {
-    //   return setPicMessage("Please Select an Image");
-    // }
 
     setPicMessage(null);
     if (photo.type === "image/jpeg" || photo.type === "image/png") {
@@ -76,7 +70,7 @@ const RegisterScreen = () => {
       );
       data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
       data.append("folder", "gistnotes");
-
+      setPicMessage("Image is uploading, please wait...");
       fetch(
         `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
         {
@@ -88,9 +82,13 @@ const RegisterScreen = () => {
         .then((data) => {
           console.log(data);
           setPic(data.url.toString());
+          setPicMessage(null);
+          // setLoading(false);
         })
         .catch((err) => {
+          setPicMessage("Error uploading image!");
           console.log(err);
+          setError(err.message);
         });
     } else {
       return setPicMessage("Please Select an Image of type jpeg/png only");
@@ -111,6 +109,7 @@ const RegisterScreen = () => {
               value={name}
               placeholder="Enter name"
               onChange={(e) => setName(e.target.value)}
+              required
             />
           </Form.Group>
 
@@ -121,6 +120,7 @@ const RegisterScreen = () => {
               value={email}
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </Form.Group>
 
@@ -131,6 +131,7 @@ const RegisterScreen = () => {
               value={password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </Form.Group>
           <Form.Group controlId="confirmPassword">
@@ -140,11 +141,12 @@ const RegisterScreen = () => {
               value={confirmpassword}
               placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
+              required
             />
           </Form.Group>
 
           {picMessage && (
-            <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
+            <ErrorMessage variant="info">{picMessage}</ErrorMessage>
           )}
           <Form.Group controlId="pic">
             <Form.Label>Profile Picture</Form.Label>
