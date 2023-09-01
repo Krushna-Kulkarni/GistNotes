@@ -13,8 +13,8 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const userAuth = useSelector((state) => state?.userAuth);
-  const { loading, error, userInfo } = userAuth;
+  const userLogin = useSelector((state) => state?.userLogin);
+  const { loading, error, userInfo } = userLogin;
   const navigate = useNavigate();
 
   useEffect(() => {

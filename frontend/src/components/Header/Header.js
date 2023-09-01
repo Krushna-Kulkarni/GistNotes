@@ -7,15 +7,13 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../slices/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userAuth = useSelector((state) => state?.userAuth);
-  const { userInfo } = userAuth;
 
   const logoutHandler = () => {
     dispatch(logout());
