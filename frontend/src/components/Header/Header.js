@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../slices/userSlice";
 
-const Header = () => {
+const Header = ({ setSearch }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,6 +34,9 @@ const Header = () => {
                 type="text"
                 placeholder="Search"
                 className="mr-sm-2"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
               />
             </Form>
           </Nav>

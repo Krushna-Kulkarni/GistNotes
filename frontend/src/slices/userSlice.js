@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const userInfoFromLocalStorage = localStorage.getItem("userInfo")
-  ? JSON.stringify(localStorage.getItem("userInfo"))
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 
-const initialState = {
-  userInfo: userInfoFromLocalStorage,
-};
+const initialState = { userInfo: userInfoFromStorage };
 
 export const userLogin = createSlice({
   name: "login",
