@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const userInfo = localStorage.getItem("userInfo");
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
 
-  //   if (userInfo) {
-  //     navigate("/mynotes");
-  //   }
-  // }, [navigate]);
+    if (userInfo) {
+      navigate("/mynotes");
+    }
+  }, [navigate]);
 
   return (
     <div className="main">

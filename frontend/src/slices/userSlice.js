@@ -111,7 +111,61 @@ export const register = (name, email, password, pic) => async (dispatch) => {
   }
 };
 
+export const userUpdate = createSlice({
+  name: "userUpdate",
+  initialState: {},
+  reducers: {
+    userUpdateRequest: (state) => {
+      state.loading = true;
+    },
+    userUpdateSuccess: (state, action) => {
+      state.loading = false;
+      state.userInfo = action.payload;
+      state.success = true;
+    },
+    userUpdateFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+      state.success = false;
+    },
+  },
+});
+
+export const updateProfile = (user) => async (dispatch, getState) => {
+  try {
+    dispatch(userUpdateRequest());
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.post("/api/users/profile", user, config);
+    dispatch(userUpdateSuccess(data));
+    dispatch(loginSuccess(data));
+
+    localStorage.setItem("userInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch(
+      userUpdateFail(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      )
+    );
+  }
+};
+
 export const { loginRequest, loginSuccess, loginFail, userLogout } =
   userLogin.actions;
 export const { registerRequest, registerSuccess, registerFail } =
   userRegister.actions;
+
+export const { userUpdateRequest, userUpdateSuccess, userUpdateFail } =
+  userUpdate.actions;

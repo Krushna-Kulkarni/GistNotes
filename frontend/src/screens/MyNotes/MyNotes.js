@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import MainScreen from "../../components/MainScreen";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  deleteNote,
-  deleteNoteAction,
-  listNotes,
-} from "./../../slices/noteSlice";
+import { deleteNoteAction, listNotes } from "./../../slices/noteSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./../../components/Loading";
 import ErrorMessage from "./../../components/ErrorMessage";

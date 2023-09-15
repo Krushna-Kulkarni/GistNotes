@@ -7,11 +7,7 @@ import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import ReactMarkdown from "react-markdown";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  deleteNoteAction,
-  updateNote,
-  updateNoteAction,
-} from "./../../slices/noteSlice";
+import { deleteNoteAction, updateNoteAction } from "./../../slices/noteSlice";
 
 function UpdateNote() {
   const [title, setTitle] = useState("");
@@ -58,7 +54,7 @@ function UpdateNote() {
     };
 
     fetching();
-  }, [id, date]);
+  }, [id, date, userInfo]);
 
   const resetHandler = () => {
     setTitle("");
