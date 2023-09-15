@@ -7,13 +7,16 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../slices/userSlice";
 
 const Header = ({ setSearch }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -41,17 +44,24 @@ const Header = ({ setSearch }) => {
             </Form>
           </Nav>
 
-          <Nav>
-            <Nav.Link href="/mynotes">My Notes</Nav.Link>
-            <NavDropdown title="Krushna Kulkarni" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+          {userInfo ? (
+            <Nav>
+              <Nav.Link href="/mynotes">My Notes</Nav.Link>
+              <NavDropdown title={userInfo?.name} id="basic-nav-dropdown">
+                <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
 
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={() => logoutHandler()}>
-                Logout
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            <Nav>
+              {" "}
+              <Nav.Link href="/login">Login</Nav.Link>
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
