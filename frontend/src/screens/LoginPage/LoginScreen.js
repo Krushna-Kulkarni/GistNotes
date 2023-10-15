@@ -57,10 +57,24 @@ const LoginScreen = () => {
           <Button variant="primary" className="my-2" type="submit">
             Submit
           </Button>
+          <Button
+            onClick={() => {
+              setEmail("guest@example.com");
+              setPassword("guest@123456");
+            }}
+            variant="primary"
+            className="my-2 ml-2"
+            type="submit"
+          >
+            Login as Guest
+          </Button>
         </Form>
         <Row className="py-3">
           <Col>
-            New Customer ? <Link to="/register">Register Here</Link>
+            New Customer ?{" "}
+            <Link style={{ color: "#158cba" }} to="/register">
+              Register Here
+            </Link>
           </Col>
         </Row>
       </div>
