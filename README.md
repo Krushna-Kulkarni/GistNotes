@@ -1,5 +1,13 @@
 # GistNotes
 
+<table>
+<tr>
+<td>
+  GistNotes provides you one safe place for all your notes.
+</td>
+</tr>
+</table>
+
 # ![GistNotes](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Landing-Page.png)
 
 ## Demo
