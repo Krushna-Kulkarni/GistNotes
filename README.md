@@ -1,20 +1,12 @@
-# GistNotes
+# GistNotes - Note Taking App
 
-<table>
-<tr>
-<td>
-  GistNotes provides you one safe place for all your notes.
-</td>
-</tr>
-</table>
+GistNotes provides you one safe place for all your notes.
 
-# ![GistNotes](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Landing-Page.png)
+# ![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Landing-Page.png)
 
 ## Demo
 
 Here is a working live demo : https://gistnotes.up.railway.app/
-
-## Site
 
 ### Landing Page
 
