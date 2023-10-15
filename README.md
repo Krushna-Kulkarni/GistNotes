@@ -2,7 +2,7 @@
 
 GistNotes provides you one safe place for all your notes.
 
-# ![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Landing-Page.png)
+# ![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Example-Note.png)
 
 ## Demo
 
@@ -12,12 +12,12 @@ Here is a working live demo : https://gistnotes.up.railway.app/
 
 ![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Landing-Page.png)
 
-### Login Form
+### Authentication
 
 You can register a new account or login with an existing one.
 
-![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Auth-Login.png)
 ![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Auth-Register.png)
+![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Auth-Login.png)
 
 ### Edit Profile
 
@@ -29,7 +29,7 @@ You can register a new account or login with an existing one.
 
 ### All Notes
 
-![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/Example-Note.png)
+![](https://github.com/Krushna-Kulkarni/GistNotes/blob/main/screenshots/All-Notes.png)
 
 ### Search Notes
 
