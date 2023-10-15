@@ -66,8 +66,10 @@ const MyNotes = ({ search }) => {
       {loading && <Loading />}
       {notes
         ?.toReversed()
-        .filter((filteredNote) =>
-          filteredNote.title.toLowerCase().includes(search.toLowerCase())
+        .filter(
+          (filteredNote) =>
+            filteredNote.title.toLowerCase().includes(search.toLowerCase()) ||
+            filteredNote.category.toLowerCase().includes(search.toLowerCase())
         )
         .map((note) => {
           return (

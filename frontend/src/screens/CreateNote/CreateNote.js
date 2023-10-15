@@ -58,8 +58,8 @@ function CreateNote() {
                 className="mb-2"
                 as="textarea"
                 value={content}
-                placeholder="Enter the content"
-                rows={4}
+                placeholder={`Enter text here in Markdown Format - \n **This is bold text** \n_This text is italicized_ \n # A first-level heading \n ## A second-level heading \n ### A third-level heading \n - This is bullet point\n 1. This is List\n Add two empty spaces (__) and enter for new line`}
+                rows={10}
                 onChange={(e) => setContent(e.target.value)}
               />
             </Form.Group>

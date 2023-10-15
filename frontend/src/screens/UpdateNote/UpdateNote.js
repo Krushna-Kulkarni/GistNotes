@@ -97,8 +97,8 @@ function UpdateNote() {
               <Form.Label className="my-2">Content</Form.Label>
               <Form.Control
                 as="textarea"
-                placeholder="Enter the content"
-                rows={4}
+                placeholder={`Enter text here in Markdown Format - \n **This is bold text** \n_This text is italicized_ \n # A first-level heading \n ## A second-level heading \n ### A third-level heading \n - This is bullet point \n 1.This is List `}
+                rows={8}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
